@@ -1,4 +1,4 @@
-- name: Install nginx
+- name: Install Nginx
   ansible.builtin.yum:
     - name: nginx
       state: installed
@@ -9,15 +9,15 @@
       state: restart
       enabled: yes
 
-- name: Copying the conf try_files
+- name: Copying the config files
   ansible.builtin.copy:
     src: nginx.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
-- name: Removing try_files
+- name: Removing files
   ansible.builtin.file:
     state: absent 
-    path: /usr/share/nginx/html/*
+    path: /usr/share/nginx/html
 
 - name: Creating dir
   ansible.builtin.file:
@@ -27,7 +27,7 @@
 - name: Download 
   ansible.builtin.unarchive:
     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip 
-    dest: 
+    dest: /usr/share/nginx/html
     remote_src: yes
 
 - name: Start Nginx
