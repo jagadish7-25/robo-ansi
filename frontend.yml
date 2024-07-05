@@ -2,7 +2,7 @@
   hosts: all
   become: true
   tasks: 
-    - name: Install Nginx
+    - name: Installing Nginx
       ansible.builtin.yum:
         - name: nginx
           state: installed
