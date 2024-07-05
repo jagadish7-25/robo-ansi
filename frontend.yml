@@ -4,8 +4,8 @@
   tasks: 
     - name: Installing Nginx
       ansible.builtin.yum:
-        - name: nginx
-          state: installed
+        name: nginx
+        state: installed
 
 
     - name: Copying the config files
@@ -31,8 +31,8 @@
 
     - name: Start Nginx
       ansible.builtin.systemd:
-        - name: nginx
-          state: restart
-          enabled: yes
+         name: nginx
+         state: restart
+         enabled: yes
 
 
